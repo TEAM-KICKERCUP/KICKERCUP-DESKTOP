@@ -1,0 +1,179 @@
+﻿<Page x:Class="GUI.Create_Tournament"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:GUI"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="Create_Tournament"
+      d:DesignHeight="630" d:DesignWidth="1000"
+      mc:Ignorable="d">
+
+    <!-- Seite zum Anlegen eines neuen Turniers. Die Seiteninhalte werden der Uebersichtlichkeit halber nacheinander mit dem Klick auf den Weiter-Button eingeblendet -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition MinWidth="150" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="120" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="0.5*" MinHeight="80" />
+            <RowDefinition Height="0.5*" MinHeight="80" />
+            <RowDefinition Height="0.5*" MinHeight="80" />
+            <RowDefinition MinHeight="80" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Button Width="74" HorizontalAlignment="Center" Click="b_fb_share_Click" ToolTip="Auf Facebook teilen">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="theBorder" BorderBrush="Transparent" BorderThickness="2">
+                        <Image Height="45" Source="/assets/fb_button.png" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="theBorder" Property="BorderBrush" Value="LightSkyBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Grid.Column="1" Width="76" HorizontalAlignment="Center" Click="b_twitter_share_Click"
+                ToolTip="Sende einen Tweet">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="theBorder" BorderBrush="Transparent" BorderThickness="2">
+                        <Image Height="45" Source="/assets/twitter_button.png" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="theBorder" Property="BorderBrush" Value="LightSkyBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="b_feedback" Grid.Column="3" Width="100" Height="27" Padding="2" Background="White"
+                BorderBrush="#09833f" BorderThickness="1" Click="b_feedback_Click" Content="Feedback" FontSize="13"
+                FontWeight="Bold" Foreground="#09833f" />
+        <Button x:Name="b_logout" Grid.Column="4" Width="100" Height="27" Padding="2" Background="White"
+                BorderBrush="#09833f" BorderThickness="1" Click="b_logout_Click" Content="Abmelden" FontSize="13"
+                FontWeight="Bold" Foreground="#09833f" />
+        <Button x:Name="b_cancel" Grid.Row="6" Grid.Column="2" Width="100" Height="27" Margin="0,0,170,0" Padding="2"
+                Background="White" BorderBrush="#09833f" BorderThickness="2" Click="b_cancel_Click" Content="Abbrechen"
+                FontSize="14" FontWeight="DemiBold" Foreground="#09833f" />
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Content="Neues Turnier erstellen" FontSize="26" FontWeight="DemiBold" />
+
+        <!-- Turniername eingeben  -->
+        <TextBox x:Name="tb_tournament_name" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Width="250" Height="35"
+                 Padding="4,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                 VerticalContentAlignment="Center" BorderBrush="#09833f" BorderThickness="2" FontSize="16" />
+        <TextBlock x:Name="tbl_tournament_name" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Width="250"
+                   Height="35" Padding="5,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16"
+                   Foreground="DarkGray" IsHitTestVisible="False" Text="Turniername">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=tb_tournament_name}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock x:Name="tbl_tournament_name_explanation" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1"
+                   Grid.ColumnSpan="3" MaxWidth="400" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="14" Foreground="DarkGreen"
+                   Text="Bitte hier einen Turniernamen eingeben. Der Turniername ist einzigartig für jedes Turnier und kann nicht mehr geändert werden."
+                   TextWrapping="Wrap" />
+        <Button x:Name="b_continue1" Grid.Row="6" Grid.Column="2" Width="100" Height="27" Margin="170,0,0,0"
+                Padding="2" Background="#09833f" Click="b_continue1_Click" Content="Weiter" FontSize="14"
+                FontWeight="DemiBold" Foreground="White" Visibility="Visible" />
+
+        <!-- Turniermodus eingeben  -->
+        <ComboBox x:Name="cb_game_mode" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Width="250" Height="35"
+                  Padding="4,2,2,2" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                  VerticalContentAlignment="Center" BorderThickness="2" FontSize="15" IsEditable="True"
+                  IsReadOnly="True" SelectedIndex="0" SelectedValuePath="Content"
+                  SelectionChanged="cb_game_mode_SelectionChanged" Visibility="Hidden">
+            <ComboBoxItem Content="Wähle Turniermodus" />
+            <ComboBoxItem Content="Double Elimination" />
+            <ComboBoxItem Content="Ranked Solo Match" />
+            <ComboBoxItem Content="Ranked Team Match" />
+        </ComboBox>
+        <TextBlock x:Name="tbl_explanation" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3"
+                   MaxWidth="400" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"
+                   Foreground="DarkGreen" TextWrapping="Wrap" Visibility="Hidden" />
+
+        <Button x:Name="b_continue2" Grid.Row="6" Grid.Column="2" Width="100" Height="27" Margin="170,0,0,0"
+                Padding="2" Background="#09833f" Click="b_continue2_Click" Content="Weiter" FontSize="14"
+                FontWeight="DemiBold" Foreground="White" Visibility="Hidden" />
+
+        <!--  Saetze pro Match, Tore pro Satz, Abspeichern des Turniers und Weiterleitung zu Teilnehmer hinzufuegen  -->
+        <TextBlock x:Name="tbl_sets" Grid.Row="3" Grid.Column="2" Height="25" MaxWidth="120" Margin="0,0,100,0"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" Text="Sätze pro Match"
+                   TextWrapping="Wrap" Visibility="Hidden" />
+        <ComboBox x:Name="cb_sets" Grid.Row="3" Grid.Column="2" Width="50" Height="25" Margin="100,0,0,0"
+                  HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" IsEditable="True"
+                  IsReadOnly="True" SelectedIndex="0" SelectedValuePath="Content" Visibility="Hidden">
+            <ComboBoxItem Content="" />
+            <ComboBoxItem Content="1" />
+            <ComboBoxItem Content="3" />
+            <ComboBoxItem Content="5" />
+            <ComboBoxItem Content="7" />
+            <ComboBoxItem Content="9" />
+        </ComboBox>
+        <Image x:Name="tt_sets" Grid.Row="3" Grid.Column="2" Width="15" Height="15" Margin="180,0,0,0"
+               HorizontalAlignment="Center" VerticalAlignment="Top" Source="/KICKERCUP;component/assets/question.jpg"
+               ToolTip="Wie viele Sätze sollen pro Match gespielt werden?" Visibility="Hidden" />
+
+        <TextBlock x:Name="tbl_goals" Grid.Row="4" Grid.Column="2" Height="25" MaxWidth="120" Margin="0,0,100,0"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" Text="Tore pro Satz"
+                   TextWrapping="Wrap" Visibility="Hidden" />
+        <ComboBox x:Name="cb_goals" Grid.Row="4" Grid.Column="2" Width="50" Height="25" Margin="100,0,0,0"
+                  HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" IsEditable="True"
+                  IsReadOnly="True" SelectedIndex="0" SelectedValuePath="Content" Visibility="Hidden">
+            <ComboBoxItem Content="" />
+            <ComboBoxItem Content="1" />
+            <ComboBoxItem Content="2" />
+            <ComboBoxItem Content="3" />
+            <ComboBoxItem Content="4" />
+            <ComboBoxItem Content="5" />
+            <ComboBoxItem Content="6" />
+            <ComboBoxItem Content="7" />
+            <ComboBoxItem Content="8" />
+            <ComboBoxItem Content="9" />
+            <ComboBoxItem Content="10" />
+        </ComboBox>
+        <Image x:Name="tt_goals" Grid.Row="4" Grid.Column="2" Width="15" Height="15" Margin="180,0,0,0"
+               HorizontalAlignment="Center" VerticalAlignment="Top" Source="/KICKERCUP;component/assets/question.jpg"
+               ToolTip="Wie viele Tore sind notwendig um einen Satz zu gewinnen?" Visibility="Hidden" />
+
+        <TextBlock x:Name="tbl_ranked" Grid.Row="5" Grid.Column="2" Height="25" MaxWidth="120" Margin="0,0,100,0"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" Text="Turnier werten?"
+                   TextWrapping="Wrap" Visibility="Hidden" />
+        <ComboBox x:Name="cb_ranked" Grid.Row="5" Grid.Column="2" Width="50" Height="25" Margin="100,0,0,0"
+                  HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14" IsEditable="True"
+                  IsReadOnly="True" SelectedIndex="0" SelectedValuePath="Content" Visibility="Hidden">
+            <ComboBoxItem Content="" />
+            <ComboBoxItem Content="ja" />
+            <ComboBoxItem Content="nein" />
+        </ComboBox>
+        <Image x:Name="tt_ranked" Grid.Row="5" Grid.Column="2" Width="15" Height="15" Margin="180,0,0,0"
+               HorizontalAlignment="Center" VerticalAlignment="Top" Source="/KICKERCUP;component/assets/question.jpg"
+               ToolTip="Sollen die Teilnehmer in diesem Turnier Skillpunkte sammeln?" Visibility="Hidden" />
+
+        <Button x:Name="b_add_competitors" Grid.Row="6" Grid.Column="2" Width="170" Height="27" Margin="190,0,0,0"
+                Padding="2" Background="#09833f" Click="b_save_basic_tournament_Click" Content="Teilnehmer hinzufügen"
+                FontSize="14" FontWeight="DemiBold" Foreground="White" Visibility="Hidden" />
+    </Grid>
+</Page>

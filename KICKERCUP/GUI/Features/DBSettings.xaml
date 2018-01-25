@@ -1,0 +1,47 @@
+﻿<Page x:Class="GUI.DBSettings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:GUI"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="DBSettings"
+      d:DesignHeight="630" d:DesignWidth="1000"
+      mc:Ignorable="d">
+
+    <!-- Seite zur Aenderung der Datenbankverbindung -->
+    <Grid Width="980" Height="610" Margin="10,10,10,10.4" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Image x:Name="logo" Width="178" Height="74" Margin="10,61,792,0" HorizontalAlignment="Center"
+               VerticalAlignment="Top" Source="/KICKERCUP;component/assets/logo.png" />
+        <Label x:Name="txt_welcome" Width="519" Height="56" Margin="241,95,220,459" HorizontalAlignment="Center"
+               VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Datenbankverbindung"
+               FontSize="30" FontWeight="Bold" />
+        <TextBox x:Name="tb_db_constr" Width="647" Height="65" Margin="199,330,0,0" HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Text="Server=HOST;Database=DBNAME;User ID=USER;Password=PASSWORD!;Trusted_Connection=True;Integrated Security=False;"
+                 TextWrapping="Wrap" />
+        <Label Margin="196,299,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+               Content="Microsoft SQL Server Connection String" />
+        <Grid Width="300" Margin="0,477,33,52" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="b_save" Grid.Row="1" Width="80" Padding="3" HorizontalAlignment="Right"
+                    VerticalAlignment="Center" Background="#09833f" Click="b_save_Click" Content="Speichern"
+                    FontSize="13" FontWeight="DemiBold" Foreground="White" />
+            <Button x:Name="b_cancel" Grid.Row="1" Grid.Column="1" Width="80" Padding="3" HorizontalAlignment="Right"
+                    VerticalAlignment="Center" Background="#09833f" Click="b_cancel_Click" Content="Abbrechen"
+                    FontSize="13" FontWeight="DemiBold" Foreground="White" />
+
+        </Grid>
+        <Button x:Name="b_db_use_constr" Width="186" Margin="0,268,361,316" Padding="3" HorizontalAlignment="Right"
+                VerticalAlignment="Center" Background="#09833f" Click="b_db_use_constr_Click"
+                Content="Eigenen SQL Server angeben" FontSize="13" FontWeight="DemiBold" Foreground="White" />
+        <TextBlock Margin="199,180,134,357" FontSize="13" TextWrapping="WrapWithOverflow">
+            Standardmäßig wird die (localdb)\MSSQLLocalDB SQL Server-Instanz auf Ihrem Computer verwendet.
+            Falls Sie diese nicht installiert haben oder einen anderen SQL Server verwenden möchten, können Sie im Textfeld unten einen angeben.
+            Diese Einstellung kann einmalig nach dem Programmstart, bevor sich ein Benutzer angemeldet hat, vorgenommen werden. Die Einstellung gilt nur, solange das Programm ausgeführt wird.
+        </TextBlock>
+    </Grid>
+</Page>

@@ -1,0 +1,92 @@
+﻿<Page x:Class="GUI.Admin_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:GUI"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="Admin_Page"
+      d:DesignHeight="630" d:DesignWidth="1000"
+      mc:Ignorable="d">
+
+    <!-- Uebersichtsseite: Aendern von Benutzereinstellungen oder Teilnehmern (bearbeiten oder neue anlegen), Neues Turnier starten -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition MinWidth="150" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="120" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <Button Width="74" HorizontalAlignment="Center" Click="b_fb_share_Click" ToolTip="Auf Facebook teilen">
+
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="theBorder" BorderBrush="Transparent" BorderThickness="2">
+                        <Image Height="45" Source="/assets/fb_button.png" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="theBorder" Property="BorderBrush" Value="LightSkyBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Grid.Column="1" Width="76" HorizontalAlignment="Center" Click="b_twitter_share_Click"
+                ToolTip="Sende einen Tweet">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="theBorder" BorderBrush="Transparent" BorderThickness="2">
+                        <Image Height="45" Source="assets/twitter_button.png" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="theBorder" Property="BorderBrush" Value="LightSkyBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="b_feedback" Grid.Column="3" Width="100" Height="27" Padding="2" Background="White"
+                BorderBrush="#09833f" BorderThickness="1" Click="b_feedback_Click" Content="Feedback" FontSize="13"
+                FontWeight="Bold" Foreground="#09833f" />
+        <Button x:Name="b_logout" Grid.Column="4" Width="100" Height="27" Padding="2" Background="White"
+                BorderBrush="#09833f" BorderThickness="1" Click="b_logout_Click" Content="Abmelden" FontSize="13"
+                FontWeight="Bold" Foreground="#09833f" />
+
+        <Label Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Content="Einstellungen" FontSize="20" FontWeight="Bold" />
+        <Button x:Name="b_new_tournament" Grid.Row="5" Grid.Column="2" Width="200" Height="30" Padding="2"
+                Background="White" BorderBrush="#09833f" BorderThickness="2" Click="b_new_tournament_Click"
+                Content="Neues Turnier" FontSize="13" FontWeight="Bold" Foreground="#09833f" />
+        <Button x:Name="b_competitor_management" Grid.Row="4" Grid.Column="2" Width="200" Height="30" Padding="2"
+                Background="White" BorderBrush="#09833f" BorderThickness="2" Click="b_competitor_management_Click"
+                Content="Teilnehmerverwaltung" FontSize="13" FontWeight="Bold" Foreground="#09833f" />
+        <Button x:Name="b_usersettings" Grid.Row="3" Grid.Column="2" Width="200" Height="30" Padding="2"
+                Background="White" BorderBrush="#09833f" BorderThickness="2" Click="b_usersettings_Click"
+                Content="Benutzereinstellungen" FontSize="13" FontWeight="Bold" Foreground="#09833f" />
+        <Button Grid.Row="6" Grid.Column="2" Margin="0,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Click="b_home_Click" Cursor="Hand" ToolTip="Home">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="theBorder" BorderBrush="Transparent">
+                        <Image Height="30" Source="/assets/home_button.png" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Page>

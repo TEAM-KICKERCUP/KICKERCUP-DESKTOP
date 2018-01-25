@@ -1,0 +1,130 @@
+﻿<Page x:Class="GUI.Ranking_List"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:GUI"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="Ranking_List"
+      d:DesignHeight="630" d:DesignWidth="1000"
+      mc:Ignorable="d">
+
+    <!-- Seite: Rangliste der Teilnehmer anzeigen -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition MinWidth="150" />
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="120" />
+            </Grid.ColumnDefinitions>
+            <Button Width="74" HorizontalAlignment="Center" Click="b_fb_share_Click" ToolTip="Auf Facebook teilen">
+
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder" BorderBrush="Transparent" BorderThickness="2">
+                            <Image Height="45" Source="/assets/fb_button.png" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="theBorder" Property="BorderBrush" Value="LightSkyBlue" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Grid.Column="1" Width="76" HorizontalAlignment="Center" Click="b_twitter_share_Click"
+                    ToolTip="Sende einen Tweet">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border x:Name="theBorder" BorderBrush="Transparent" BorderThickness="2">
+                            <Image Height="45" Source="/assets/twitter_button.png" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="theBorder" Property="BorderBrush" Value="LightSkyBlue" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="b_feedback" Grid.Column="3" Width="100" Height="27" Padding="2" Background="White"
+                    BorderBrush="#09833f" BorderThickness="1" Click="b_feedback_Click" Content="Feedback" FontSize="13"
+                    FontWeight="Bold" Foreground="#09833f" />
+            <Button x:Name="b_logout" Grid.Column="4" Width="100" Height="27" Padding="2" Background="White"
+                    BorderBrush="#09833f" BorderThickness="1" Click="b_logout_Click" Content="Abmelden" FontSize="13"
+                    FontWeight="Bold" Foreground="#09833f" />
+        </Grid>
+
+        <DataGrid x:Name="dg_ranking_list" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Width="320"
+                  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0" AutoGenerateColumns="False"
+                  IsReadOnly="True" ItemsSource="{Binding rankinglist}" RenderTransformOrigin="0.445,0.504"
+                  SelectionMode="Single" SelectionUnit="FullRow">
+            <DataGrid.Resources>
+                <local:BooleanConverterWinner x:Key="boolConverter" />
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="2*" Binding="{Binding CVornameNachname}" Header="Spieler" />
+                <DataGridTextColumn Width="55" Binding="{Binding Wins}" Header="Siege">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="50" Binding="{Binding WonFinal, Converter={StaticResource boolConverter}}"
+                                    Header="Rang">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label x:Name="l_ranking" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Content="Rangliste %Turnier%" FontSize="20" FontWeight="Bold" />
+
+        <Button Grid.Row="7" Grid.Column="1" Margin="0,0,50,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Click="b_back_Click" Cursor="Hand" ToolTip="Home">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="theBorder" BorderBrush="Transparent">
+                        <Image Height="25" Source="/assets/back_arrow.png" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Grid.Row="7" Grid.Column="1" Margin="50,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Click="b_home_Click" ToolTip="Home">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="theBorder" BorderBrush="Transparent">
+                        <Image Height="30" Cursor="Hand" Source="/assets/home_button.png" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Page>

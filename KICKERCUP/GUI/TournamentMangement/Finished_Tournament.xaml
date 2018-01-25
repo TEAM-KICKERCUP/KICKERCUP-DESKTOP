@@ -1,0 +1,42 @@
+﻿<Window x:Class="GUI.Finished_Tournament"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="Turnier beendet!" Width="370" Height="480"
+        MinWidth="370" MinHeight="480" MaxWidth="370" MaxHeight="480"
+        Topmost="true" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="40" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="80" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label x:Name="l_current_tournament" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               HorizontalContentAlignment="Center" Content="%Aktuelles Turnier%" FontSize="24" FontWeight="DemiBold"
+               Foreground="#09833f" />
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top"
+               HorizontalContentAlignment="Center" Content="beendet!" FontSize="18" FontWeight="DemiBold"
+               Foreground="#09833f" />
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               HorizontalContentAlignment="Center" Content="Gewinner:" FontSize="18" FontWeight="DemiBold"
+               Foreground="#09833f" />
+        <Label x:Name="l_winner_team" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
+               VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="%Gewinnerteam%" FontSize="24"
+               FontWeight="DemiBold" Foreground="#09833f" />
+        <Button x:Name="b_Ok" Content="Super!" Grid.Column="1" Grid.Row="4" Width="60" Height="28"
+                VerticalAlignment="Bottom" Padding="5,0,5,0" Margin="0,0,50,40" FontSize="14" FontWeight="DemiBold"
+                Foreground="#09833f" Background="White" BorderBrush="#09833f" Click="b_Ok_Click" />
+        <Image Source="/assets/celebrate.png" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Width="150"
+               HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
+    </Grid>
+</Window>
