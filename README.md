@@ -5,7 +5,7 @@
 
 
 ### Anleitung / Beschreibung KICKERCUP
->[_Anleitung KICKERCUP_](KICKERCUP_anleitung.md)
+>[_Anleitung KICKERCUP_](https://github.com/Team-FlowerPower/KICKERCUP/blob/master/KICKERCUP_Anleitung.md)
 
 
 ## Beschreibung
