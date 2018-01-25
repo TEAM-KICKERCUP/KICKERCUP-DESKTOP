@@ -4,6 +4,9 @@
 <img src="img/logo.png" width="400" alt="KICKERCUP LOGO">
 
 
+### Anleitung / Beschreibung KICKERCUP
+>[_Anleitung KICKERCUP_](KICKERCUP_anleitung.md)
+
 
 ## Beschreibung
 
